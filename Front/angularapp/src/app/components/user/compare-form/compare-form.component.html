@@ -1,0 +1,54 @@
+<div class="container"><div class="card">
+    <div class="card-header">
+        Compare Companies
+    </div>
+    <div class="card-body" >
+        
+        <!-- <form class="company-form">
+            <mat-form-field appearance="outline" style="width: 100%"> 
+              <mat-label>Company</mat-label>
+              <input type="text"
+                     placeholder="Eg. Apple, Microsoft"
+                     aria-label="companyName"
+                     matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto"
+                     style="width: 100%"
+                     />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let company of filteredCompanies | async" [value]="company.companyName" >
+                  {{company.companyName}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="selectedCompany">
+                <mat-label>Stock Exchange</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let stockExchange of selectedCompany.stockExchanges" [value]="stockExchange.stockExchange" >
+                        {{stockExchange.stockExchange}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button class="btn btn-primary">Add this</button>
+          </form> -->
+
+        <form class="company-form">
+            <div class="form-floating mb-3">
+                <input class="form-control" list="companylistOptions" id="CompanyDataList" placeholder="Type to search Company Name..." [formControl]="myControl">
+                <label for="CompanyDataList">Company</label>
+            </div>
+            <datalist id="companylistOptions">
+                <option *ngFor="let company of filteredCompanies | async" [value]="company.companyName" >
+            </datalist>
+            <div class="form-floating mb-3" *ngIf="selectedCompany">
+                <select class="form-select" aria-label="Default select example"  id="StockExchangeDataList">
+                <!-- <option selected>Open this select menu</option> -->
+                    <option option *ngFor="let stockExchange of selectedCompany.stockExchanges" [value]="stockExchange.stockExchange" >{{stockExchange.stockExchange}}</option>
+                </select>
+              <label for="StockExchangeDataList">Stock Exchange</label>
+            </div>
+            <button class="btn btn-primary">Add this</button>
+        </form>
+    </div>
+</div>
+</div>
